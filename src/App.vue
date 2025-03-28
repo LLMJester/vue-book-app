@@ -1,15 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <h1>Book List</h1>
+    <ul>
+      <li v-for="book in books" :key="book.id">{{ book.title }}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      books: []
+    }
+  },
+  created() {
+    // Fetch the books data from your API
+    fetch('https://clean-api-k8hl.onrender.com/books')
+      .then(response => response.json())
+      .then(data => {
+        this.books = data;
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
   }
 }
 </script>
@@ -17,8 +32,6 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
