@@ -2,6 +2,7 @@
   <div id="app">
     <h1>Book List</h1>
     <ul>
+      <!-- Loop through 'books' array and display each book's title -->
       <li v-for="book in books" :key="book.id">{{ book.title }}</li>
     </ul>
   </div>
@@ -13,7 +14,7 @@ export default {
   data() {
     return {
       books: []  // Holds the fetched book list
-    }
+    };
   },
   created() {
     // Fetch data from the API when the component is created
@@ -26,7 +27,7 @@ export default {
         console.error('Error fetching books:', error);  // Log any errors
       });
   }
-}
+};
 </script>
 
 <style>
