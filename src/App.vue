@@ -12,19 +12,18 @@ export default {
   name: 'App',
   data() {
     return {
-      books: []
+      books: []  // Holds the fetched book list
     }
   },
   created() {
-    // Fetch the books data from your API
-    fetch('fetch('https://clean-api-k8hl.onrender.com/books')  // Keep this URL as is
-')
-      .then(response => response.json())
+    // Fetch data from the API when the component is created
+    fetch('https://clean-api-k8hl.onrender.com/books') // Ensure this URL is correct
+      .then(response => response.json())  // Parse the response as JSON
       .then(data => {
-        this.books = data;
+        this.books = data;  // Update the 'books' array with the fetched data
       })
       .catch(error => {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching books:', error);  // Log any errors
       });
   }
 }
@@ -36,5 +35,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 18px;
+  margin: 10px;
 }
 </style>
