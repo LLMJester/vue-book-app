@@ -17,7 +17,8 @@ export default {
   },
   created() {
     // Fetch the books data from your API
-    fetch('https://clean-api-k8hl.onrender.com/books')
+    fetch('fetch('https://clean-api-k8hl.onrender.com/books')  // Keep this URL as is
+')
       .then(response => response.json())
       .then(data => {
         this.books = data;
